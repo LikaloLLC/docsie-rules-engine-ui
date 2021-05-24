@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+
+  "definitions": {
+    "fields": {
+      "title": "fields",
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/definitions/basic"
+          },
+          {
+            "$ref": "#/definitions/related"
+          }
+        ]
+      }
+    },
+    "basic": {
+      "title": "Field",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "label": "Field Name"
+        },
+        "lookup": {
+          "type": "string",
+          "label": "Filter Lookup"
+        },
+        "value": {
+          "type": "string",
+          "label": "Filter Value"
+        }
+      }
+    },
+    "related": {
+      "type": "object",
+      "title": "Related Field",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "fields": {
+          "$ref": "#/definitions/fields"
+        }
+      }
+    }
+  },
+
+  "type": "object",
+  "properties": {
+    "db__user": {
+      "type": "object",
+      "title": "User",
+      "properties": {
+        "id": {
+          "type": "string",
+          "enum": [ "db__user" ]
+        },
+        "fields": {"$ref": "#/definitions/fields"}
+      },
+      "required": ["id"]
+    }
+  }
+}

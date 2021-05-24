@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+
+  "definitions": {
+    "notification": {
+      "type": "object",
+      "title": "notification",
+      "properties": {
+        "id": {
+          "type": "string",
+          "enum": [ "notification" ]
+        },
+        "verb": {"type": "string"},
+        "level": {"type": "string"},
+        "nf_type": {"type": "string"},
+        "description": {"type": "string"},
+        "cache_timeout": {"type": "integer", "minimum": 1}
+      },
+      "required": ["id"]
+    }
+  }
+}
